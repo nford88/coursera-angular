@@ -1,20 +1,4 @@
-// (function () {
-// 'use strict';
-//
-// angular.module('LunchCheck', [])
-// .controller('LunchCheckController', LunchCheckController);
-//
-// LunchCheckController.$inject = ['$scope'];
-//   function LunchCheckController($scope){
-//     $scope.box = "John";
-//     $scope.noMeals function (box, seperator){
-//         var box = $scope.box;
-//         console.log(box);
-//
-//     };
-//
-// }
-// })();
+
 
 (function() {
 
