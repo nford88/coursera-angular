@@ -16,15 +16,15 @@
    <div class="container" ng-controller='LunchCheckController'>
      <h1>Lunch Checker</h1>
          <div class="form-group">
-             <input id="lunch-menu" type="text" ng-model='lunch'
+             <input id="lunch-menu" type="text" ng-model='box'
              placeholder="list comma separated dishes you usually have for lunch"
              class="form-control {{borderStyle}}">
          </div>
          <div class="form-group">
              <button ng-click="checkIfTooMuch()" class="btn btn-default">Check If Too Much</button>
          </div>
-         <div class="form-group message {{style}}">
-           {{message}}
+         <div class="form-group outMessage {{style}}">
+           {{outMessage}}
          </div>
    </div>
 
