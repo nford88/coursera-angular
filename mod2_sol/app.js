@@ -6,30 +6,125 @@ angular.module('ShoppingListCheckOff', [])
 .controller('AlreadyBoughtController', AlreadyBoughtController)
 .service('ShoppingListCheckOffService', ShoppingListCheckOffService)
 
-
 ToBuyController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyController(ShoppingListCheckOffService) {
-  var buy = this;
+  var list = this;
 
-  buy.items = ShoppingListCheckOffService.getItems();
+  list.items = ShoppingListCheckOffService.getItemsToBuy();
 
-  buy.itemName = "";
-  buy.itemQuantity = "";
-
-  buy.addItem = function () {
-      ShoppingListCheckOffService.addItem(buy.itemName, buy.itemQuantity);
-    };
-
-  buy.removeItem = function (itemIndex) {
-    ShoppingListCheckOffService.removeItem(itemIndex);
+  list.moveToBoughtItems = function (item,itemIndex) {
+    ShoppingListCheckOffService.moveToBoughtItems(item,itemIndex);
   };
 }
 
 AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
 function AlreadyBoughtController(ShoppingListCheckOffService) {
-  var bought = this;
+  var list = this;
 
+  list.items = ShoppingListCheckOffService.getBoughtItems();
 
 }
 
-});
+function ShoppingListCheckOffService() {
+  var service = this;
+
+  // List of items to buy
+  var toBuy = [
+  {
+    name: "Milk",
+    quantity: "2"
+  },
+  {
+    name: "Donut",
+    quantity: "200"
+  },
+  {
+    name: "Cookie",
+    quantity: "300"
+  },
+  {
+    name: "Chocolate",
+    quantity: "5"
+  },
+  {
+    name: "Coconut",
+    quantity: "4"
+  },
+  {
+    name: "Olive oil",
+    quantity: "1"
+  },
+  {
+    name: "Jogurt",
+    quantity: "10"
+  },
+  {
+    name: "Cucumber",
+    quantity: "8"
+  },
+  {
+    name: "Cacao",
+    quantity: "2"
+  },
+  {
+    name: "Creams",
+    quantity: "40"
+  }
+  ];
+
+  // List of bought items
+  var bought = [];
+
+  service.getItemsToBuy = function () {
+    return toBuy;
+  };
+
+  service.getBoughtItems = function () {
+    return bought;
+  };
+
+  service.moveToBoughtItems = function (item,itemIndex) {
+    bought.push(item);
+    toBuy.splice(itemIndex, 1);
+  };
+
+}
+
+})();
+
+
+// (function () {
+// 'use strict';
+
+// angular.module('ShoppingListCheckOff', [])
+// .controller('ToBuyController', ToBuyController)
+// .controller('AlreadyBoughtController', AlreadyBoughtController)
+// .service('ShoppingListCheckOffService', ShoppingListCheckOffService)
+
+
+// ToBuyController.$inject = ['ShoppingListCheckOffService'];
+// function ToBuyController(ShoppingListCheckOffService) {
+//   var buy = this;
+
+//   buy.items = ShoppingListCheckOffService.getItems();
+
+//   buy.itemName = "";
+//   buy.itemQuantity = "";
+
+//   buy.addItem = function () {
+//       ShoppingListCheckOffService.addItem(buy.itemName, buy.itemQuantity);
+//     };
+
+//   buy.removeItem = function (itemIndex) {
+//     ShoppingListCheckOffService.removeItem(itemIndex);
+//   };
+// }
+
+// AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
+// function AlreadyBoughtController(ShoppingListCheckOffService) {
+//   var bought = this;
+
+
+// }
+
+// });
