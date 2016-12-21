@@ -1,0 +1,70 @@
+<!doctype html>
+<html ng-app='ShoppingListCheckOff' lang="en">
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .emptyMessage {
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+    </style>
+  </head>
+<body>
+  <div class="container">
+    <h1>Shopping List Check Off</h1>
+
+    <div class="row">
+
+      <!-- To Buy List -->
+      <div class="col-md-6" id="need" ng-controller='ToBuyController as buy'>
+       <h2>To Buy:</h2>
+        <input type="text" ng-model="buy.itemName" placeholder="item name">
+        <input type="text" ng-model="buy.itemQuantity" placeholder="quantity">
+        <button ng-click="buy.addItem();">Add Item</button>
+        <ol>
+          <li ng-repeat="items in buy.items">
+            {{ item.quantity }} of {{ item.name }}
+            <button ng-class= lass="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+          </li>
+        </ol>
+        <div class="error">Error: {{list.errorMessage}}</div>
+      </div>
+    </div>
+
+  <!--    <ul>
+       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+     </ul>
+     <div class="emptyMessage">Everything is bought!</div>
+    </div> -->
+
+    <!-- Already Bought List -->
+<!--     <div class="col-md-6" id="bought" ng-controller='AlreadyBoughtController as bought'>
+     <h2>Already Bought:</h2>
+      <ol>
+        <li ng-repeat="item in list2.items">
+          {{ item.quantity }} of {{ item.name }}
+        </li>
+      </ol>
+
+     <div class="error">TBC ** nothing bought yet **: {{list.errorMessage}}</div>
+    </div> -->
+  </div>
+</div>
+
+</body>
+</html>
